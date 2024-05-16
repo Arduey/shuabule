@@ -74,13 +74,14 @@
                 border: none;
             }
             div>a {
-                padding: 5px 4px;  
+                padding: 5px 5px;  
                 margin:0px 4px;
                 font-size: 16px; 
                 text-decoration:none;
             }
             #tijiao, .querybutton {  
                 padding: 5px 20px;
+				margin: 2% 0%;
             }
             .datashow{  
                 color: red;
@@ -110,7 +111,7 @@
                 background-color:transparent;
                 border:none;
             }
-            #hand{
+            #hand, #account1{
                 background-color: darkred;
             }
             #model_auto, #model_lock{
@@ -190,7 +191,52 @@
 					<a id="a1" href="https://mp.weixin.qq.com/s/gM0fHhXdi7AmBjKdRV-aug">新手使用教程</a>
 					<a id="a2" href="https://txc.qq.com/products/505746/faqs-more?id=137996">刷步问题自查</a>
 				</div>
-				<div id="yourForm" >
+				<div id="model"><!-- 切换模块 -->
+					<a id="account1" onclick="account(1)">账号1</a>
+					<a id="account2" onclick="account(2)">账号2</a>
+					<a id="account3" onclick="account(3)">账号3</a>
+					<a id="account4" onclick="account(4)">账号4</a>
+				</div>
+				<!--切换多账号-->
+				<script>
+				function account(modeltype){
+					if(modeltype==1){
+						document.getElementById('account1').style.backgroundColor="darkred";
+						document.getElementById('account2').style.backgroundColor="rgb(0 0 0 / 25%)";
+						document.getElementById('account3').style.backgroundColor="rgb(0 0 0 / 25%)";
+						document.getElementById('account4').style.backgroundColor="rgb(0 0 0 / 25%)";
+						document.getElementById('handuser').value=localStorage.getItem('handuser1');
+						document.getElementById('handpassword').value=localStorage.getItem('handpassword1');
+					}
+					if(modeltype==2){
+						document.getElementById('account1').style.backgroundColor="rgb(0 0 0 / 25%)";
+						document.getElementById('account2').style.backgroundColor="darkred";
+						document.getElementById('account3').style.backgroundColor="rgb(0 0 0 / 25%)";
+						document.getElementById('account4').style.backgroundColor="rgb(0 0 0 / 25%)";
+						document.getElementById('handuser').value=localStorage.getItem('handuser2');
+						document.getElementById('handpassword').value=localStorage.getItem('handpassword2');
+
+					}
+					if(modeltype==3){
+						document.getElementById('account1').style.backgroundColor="rgb(0 0 0 / 25%)";
+						document.getElementById('account2').style.backgroundColor="rgb(0 0 0 / 25%)";
+						document.getElementById('account3').style.backgroundColor="darkred";
+						document.getElementById('account4').style.backgroundColor="rgb(0 0 0 / 25%)";
+						document.getElementById('handuser').value=localStorage.getItem('handuser3');
+						document.getElementById('handpassword').value=localStorage.getItem('handpassword3');
+					}
+					if(modeltype==4){
+						document.getElementById('account1').style.backgroundColor="rgb(0 0 0 / 25%)";
+						document.getElementById('account2').style.backgroundColor="rgb(0 0 0 / 25%)";
+						document.getElementById('account3').style.backgroundColor="rgb(0 0 0 / 25%)";
+						document.getElementById('account4').style.backgroundColor="darkred";
+						document.getElementById('handuser').value=localStorage.getItem('handuser4');
+						document.getElementById('handpassword').value=localStorage.getItem('handpassword4');
+					}
+					document.getElementById('autohistory').style.display="none";
+				}
+			</script>
+				<div id="yourForm">
 					<div class="datashow" id="handusererr"></div>
 					<div><input type="text" name="handuser" id="handuser" placeholder="帐号"></div>
 					<div class="datashow" id="handpassworderr"></div>
@@ -210,8 +256,22 @@
 					var handuser = document.getElementById('handuser').value;
 					var handpassword = document.getElementById('handpassword').value;
 					var step = document.getElementById('step').value;
-					localStorage.setItem('handuser', handuser);
-					localStorage.setItem('handpassword', handpassword)
+					if(document.getElementById('account1').style.backgroundColor=="darkred"){
+						localStorage.setItem('handuser1', handuser);
+						localStorage.setItem('handpassword1', handpassword)
+					}
+					if(document.getElementById('account2').style.backgroundColor=="darkred"){
+						localStorage.setItem('handuser2', handuser);
+						localStorage.setItem('handpassword2', handpassword)
+					}
+					if(document.getElementById('account3').style.backgroundColor=="darkred"){
+						localStorage.setItem('handuser3', handuser);
+						localStorage.setItem('handpassword3', handpassword)
+					}
+					if(document.getElementById('account4').style.backgroundColor=="darkred"){
+						localStorage.setItem('handuser4', handuser);
+						localStorage.setItem('handpassword4', handpassword)
+					}
 					document.getElementById('handusererr').innerText = (!handuser) ? "请输入账号" : "";
 					handusersign = !handuser ? false : true;
 					document.getElementById('handpassworderr').innerText = (!handpassword) ? "请输入密码" : "";
@@ -578,8 +638,8 @@
 			
 			<!-- 本地账号密码存取 -->
 			<script>
-				var handuser = localStorage.getItem('handuser');
-				var handpassword = localStorage.getItem('handpassword');
+				var handuser = localStorage.getItem('handuser1');
+				var handpassword = localStorage.getItem('handpassword1');
 				var autouser = localStorage.getItem('autouser');
 				var autopassword = localStorage.getItem('autopassword');
 				var lockuser = localStorage.getItem('lockuser');
