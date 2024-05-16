@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
-    <head>
+	<head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="shortcut icon" href="https://files.getquicker.net/_icons/FC32D3F57A1D4C065B18EE4FF26420C4C5D1A683.png" type="image/x-icon">
-		<link rel="icon" href="https://files.getquicker.net/_icons/FC32D3F57A1D4C065B18EE4FF26420C4C5D1A683.png" type="image/x-icon">
+        <link rel="shortcut icon" href="https://files.getquicker.net/_icons/FC32D3F57A1D4C065B18EE4FF26420C4C5D1A683.png" type="image/x-icon">
+        <link rel="icon" href="https://files.getquicker.net/_icons/FC32D3F57A1D4C065B18EE4FF26420C4C5D1A683.png" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>酷玩运动助手</title>
         <style type="text/css">
@@ -16,30 +16,30 @@
                 height: 100vh;
                 width: 100%;
                 overflow: hidden;
-				background-image: url("https://browser6.qhimg.com/dm/3048_1728_/t01075b395dd0873b73.jpg");
+                background-image: url("https://browser6.qhimg.com/dm/3048_1728_/t01075b395dd0873b73.jpg");
                 background-size: cover;  
                 font-family: "montserrat";
             }
             .form, .form1 {
                 width: 70%;
-				margin: 5% 10% 1%;
+                margin: 5% 10% 1%;
                 max-width: 600px;
                 background-color: rgb(255 255 255 / 20%);
-                padding: 5% 5% 3%;
+                padding: 2% 5% 1%;
                 border-radius: 10px;
                 box-shadow: 0 0 5px #000;
                 text-align: center;
                 font-family: "微软雅黑";
-				background-image: url(https://files.getquicker.net/_sitefiles/_guides/52593d69-c99a-4367-8b98-08d9a65be47e/2023/12/25/223125_202824_0.gif);
+                background-image: url(https://files.getquicker.net/_sitefiles/_guides/52593d69-c99a-4367-8b98-08d9a65be47e/2023/12/25/223125_202824_0.gif);
             }
-			.form1 {
-				display:none;
-				margin-top: 1%;
-				padding: 2% 5%;
-				color: #ffffff;
-				font-size: 1.1em;
-				line-height: 26px;
-			}
+            .form1 {
+                display:none;
+                margin-top: 1%;
+                padding: 2% 5%;
+                color: #ffffff;
+                font-size: 1.1em;
+                line-height: 26px;
+            }
             input:-webkit-autofill {
                 transition: background-color 5000s ease-in-out 0s;
             }
@@ -49,102 +49,103 @@
                 background-color: transparent;
                 border-style:none;
                 font-size: 1.2em;
-				outline: none;
-			    padding: 1px 0px 1px 12px;
-				text-decoration: none; 
-				display: inline-block; 
-				color: #00fffd !important;
+                outline: none;
+                padding: 1px 0px 1px 12px;
+                text-decoration: none; 
+                display: inline-block; 
+                color: #00fffd !important;
             }
             input::-webkit-outer-spin-button,
             input::-webkit-inner-spin-button {
                 -webkit-appearance: none !important;
             }
-			input::placeholder{  
+            input::placeholder{  
                 color: white;  
-			}
+            }
             input[type='number'] {
                 -moz-appearance: textfield;
             }
-			#tijiao, div>a, .querybutton {  
+            #tijiao, div>a, .querybutton {  
                 background-color: rgb(0 0 0 / 25%);
                 box-shadow: 0 0 5px #8888;
                 font-size:1.1em;
                 border-radius: 10px;
                 color: white;
                 border: none;
-			}
-			div>a {
-			    padding: 5px 4px;  
-			    margin:0px 4px;
-			    font-size: 16px; 
-			    text-decoration:none;
-			}
-			#tijiao, .querybutton {  
+            }
+            div>a {
+                padding: 5px 4px;  
+                margin:0px 4px;
+                font-size: 16px; 
+                text-decoration:none;
+            }
+            #tijiao, .querybutton {  
                 padding: 5px 20px;
-			}
-			.datashow{  
-			    color: red;
-			    padding: 12px 10% 0px 0px;
-				position: fixed;
-				right: 10px;
-				font-size: 1.1em;
-			} 
-			.datashow1{  
-			    color: red;
-				font-size: 1.1em;
-			} 
-			#backdata{  
-				color: red;
-				font-size: 1.1em;
-				width: 100%;
-			    font-size: 1.1em;
-			} 
-			#fora,#model{
-				margin: 25px auto 15px;
-			}
-			.title {
-				margin:0px 0px 25px 0px;
-				color: #16f3f299;
-			}
-			.titlebutton{
-				background-color:transparent;
-				border:none;
-			}
-			#hand{
-				background-color: darkred;
-			}
-			#model_auto, #model_lock{
-				display:none;
-			}
-			#QQchat{
-				text-align: center;
-				display: block;
-				margin: 5% auto 0%;
-				width: 25%;
-				background-color: darkred;
-			}
-			div#model_auto>div>input {
-				margin: 8px 5px 8px;
-			}
-			div#model_auto>.datashow {
-				padding: 8px 10% 1px 12px;
-			}
-			#link {
-			    text-align: center;
-			    display: inline-block;
-			    margin: 1% 1% 4%;
-			    width: 28%;
-			    background-color: darkred;
-			}
+            }
+            .datashow{  
+                color: red;
+                padding: 12px 10% 0px 0px;
+                position: fixed;
+                right: 10px;
+                font-size: 1.1em;
+            } 
+            .datashow1{  
+                color: red;
+                font-size: 1.1em;
+            } 
+            #backdata{  
+                color: red;
+                font-size: 1.1em;
+                width: 100%;
+                font-size: 1.1em;
+            } 
+            #fora,#model{
+                margin: 25px auto 15px;
+            }
+            .title {
+                margin:0px 0px 25px 0px;
+                color: #16f3f299;
+            }
+            .titlebutton{
+                background-color:transparent;
+                border:none;
+            }
+            #hand{
+                background-color: darkred;
+            }
+            #model_auto, #model_lock{
+                display:none;
+            }
+            #QQchat{
+                text-align: center;
+                display: block;
+                margin: 5% auto 0%;
+                width: 25%;
+                background-color: darkred;
+            }
+            div#model_auto>div>input {
+                margin: 8px 5px 8px;
+            }
+            div#model_auto>.datashow {
+                padding: 8px 10% 1px 12px;
+            }
+            #link {
+                text-align: center;
+                display: inline-block;
+                margin: 1% 1% 4%;
+                width: 28%;
+                background-color: darkred;
+            }
         </style>
-		<script>
-			window.addEventListener('load', function() {
-				const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-				  if (!(/iPad|iPhone|iPod|Android/.test(userAgent))) {
-					document.getElementsByClassName("form")[0].innerHTML="<h1 style=\"text-align: center\">网页仅针对移动端展示</h1>";
-				  }
-			});
-		</script>
+        <script>
+            window.addEventListener('load', function() {
+                const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                    if (!(/iPad|iPhone|iPod|Android/.test(userAgent))) {
+                        document.getElementsByClassName("form")[0].innerHTML="<h1 style=\"text-align: center\">网页仅针对移动端展示</h1>";
+                    }
+                }
+            );
+        </script>
 	</head>
 	<body>
 		<div class="form">
@@ -152,7 +153,7 @@
 			<div id="model"><!-- 切换模块 -->
 				<a id="hand" onclick="model(1)">手动刷步</a>
 				<a id="auto" onclick="model(2)">自动刷步</a>
-                <a id="lock" onclick="model(3)">绑定账号</a>
+				<a id="lock" onclick="model(3)">绑定账号</a>
 			</div>
 			<script>
 				function model(modeltype){
@@ -202,7 +203,7 @@
 			</div>
 			<!-- 刷步 -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-            <script> 
+			<script> 
 				function shuabu(){
 					let [handusersign, handpasswordsign, stepsign1, stepsign2] = [true, true, true, true];
 					document.getElementById('handbackdata').innerText="";
@@ -221,14 +222,12 @@
 						stepsign2 = parseInt(step) > 98800 ? false : true;
 					}
 					if (!(handusersign && handpassword && stepsign1 && stepsign2)) return;
-					/*刷步data*/
 					const cryptoKey = CryptoJS.enc.Utf8.parse('8765432112345678');
 					const iv = CryptoJS.enc.Utf8.parse('1234567887654321');
 					var dataValue = CryptoJS.AES.encrypt(('00000' + (Math.floor(Math.random() * 987654321)).toString()).slice(-5) + handuser + "kwaz" + ('000000000' + (Math.floor(Math.random() * 987654321)).toString()).slice(-9) + handpassword + "kwaz" + ('00000' + (Math.floor(Math.random() * 987654321)).toString()).slice(-5) + step, cryptoKey, {
 						iv: iv
 					}).toString();
 					event.preventDefault();
-					/*刷步body*/
 					var requestBody = {
 						toUser: "3421391653@qq.com",
 						code: "MTKT",
@@ -241,7 +240,6 @@
 						txt: false
 					};
 					document.getElementById('tijiao').innerText="正在提交 请稍等"
-					/*刷步fetch*/
 					fetch('https://push.getquicker.cn/to/quicker', {
 						method: 'POST',
 						headers: {
@@ -261,7 +259,7 @@
 						document.getElementById('handbackdata').innerText = error
 					});
 				};
-            </script>
+			</script>
 			<div id="model_auto"><!-- 自动 -->
 				<div id="fora">
 					<a id="a3" href="https://support.qq.com/products/505746/faqs/154173">配置说明书</a>
@@ -339,8 +337,7 @@
 						});
 					}
 				}
-
-            </script>
+			</script>
 			<!-- 删除或更新配置 -->
 			<script> 
 				function updateinfo(type){
@@ -577,11 +574,10 @@
 						});
 					}
 				}
-
-            </script>
+			</script>
 			
 			<!-- 本地账号密码存取 -->
-            <script>
+			<script>
 				var handuser = localStorage.getItem('handuser');
 				var handpassword = localStorage.getItem('handpassword');
 				var autouser = localStorage.getItem('autouser');
