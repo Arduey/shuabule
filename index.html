@@ -70,6 +70,8 @@
 				</div>
 				<!--切换多账号-->
 				<script>
+				document.getElementById('handuser').value=localStorage.getItem('handuser1');
+				document.getElementById('handpassword').value=localStorage.getItem('handpassword1');
 				function account(modeltype){
 					if(modeltype==1){
 						document.getElementById('account1').style.backgroundColor="darkred";
