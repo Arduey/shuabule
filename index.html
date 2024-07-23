@@ -83,7 +83,7 @@
 			}
 			#tijiao, .querybutton {  
 				padding: 5px 20px;
-				margin: 0% 0% 2%;
+				margin: 0% 0% 2px;
 			}
 			.datashow{  
 				color: red;
@@ -169,30 +169,24 @@
 			</div>
 			<script>
 				function model(modeltype){
+					document.getElementById('hand').style.backgroundColor="rgb(0 0 0 / 25%)";
+					document.getElementById('auto').style.backgroundColor="rgb(0 0 0 / 25%)";
+					document.getElementById('lock').style.backgroundColor="rgb(0 0 0 / 25%)";
+					document.getElementById('model_hand').style.display="none";
+					document.getElementById('model_auto').style.display="none";
+					document.getElementById('model_lock').style.display="none";
 					if(modeltype==1){
 						document.getElementById('hand').style.backgroundColor="darkred";
-						document.getElementById('auto').style.backgroundColor="rgb(0 0 0 / 25%)";
-						document.getElementById('lock').style.backgroundColor="rgb(0 0 0 / 25%)";
 						document.getElementById('model_hand').style.display="block";
-						document.getElementById('model_auto').style.display="none";
-						document.getElementById('model_lock').style.display="none";
 						document.getElementsByClassName('likeiuput')[0].style.width=document.getElementById('handuser').offsetWidth-12+"px";
 					}
 					if(modeltype==2){
-						document.getElementById('hand').style.backgroundColor="rgb(0 0 0 / 25%)";
 						document.getElementById('auto').style.backgroundColor="darkred";
-						document.getElementById('lock').style.backgroundColor="rgb(0 0 0 / 25%)";
-						document.getElementById('model_hand').style.display="none";
 						document.getElementById('model_auto').style.display="block";
-						document.getElementById('model_lock').style.display="none";
 						document.getElementsByClassName('likeiuput')[1].style.width=document.getElementById('autouser').offsetWidth-12+"px";
 					}
 					if(modeltype==3){
-						document.getElementById('hand').style.backgroundColor="rgb(0 0 0 / 25%)";
-						document.getElementById('auto').style.backgroundColor="rgb(0 0 0 / 25%)";
 						document.getElementById('lock').style.backgroundColor="darkred";
-						document.getElementById('model_hand').style.display="none";
-						document.getElementById('model_auto').style.display="none";
 						document.getElementById('model_lock').style.display="block";
 						document.getElementsByClassName('likeiuput')[2].style.width=document.getElementById('lockuser').offsetWidth-12+"px";
 					}
@@ -321,12 +315,8 @@
 						localStorage.setItem('handapi14', handapi1);
 						localStorage.setItem('handapi24', handapi2);
 					}
-					if (handapi1){
-					    handapi = "ZEPP";
-					}
-					if (handapi2){
-					    handapi = "乐心";
-					}
+					if (handapi1){ handapi = "ZEPP"; }
+					if (handapi2){ handapi = "乐心"; }
 					document.getElementById('handusererr').innerText = (!handuser) ? "请输入账号" : "";
 					handusersign = !handuser ? false : true;
 					document.getElementById('handpassworderr').innerText = (!handpassword) ? "请输入密码" : "";
@@ -501,12 +491,8 @@
 					if (usersign && passwordsign && autoapisign){
 						var autouser = document.getElementById('autouser').value;
 						var autopassword = document.getElementById('autopassword').value;
-						if (autoapi1){
-							autoapi = "ZEPP";
-						}
-						if (autoapi2){
-							autoapi = "乐心";
-						}
+						if (autoapi1){ autoapi = "ZEPP"; }
+						if (autoapi2){ autoapi = "乐心"; }
 						<!-- 删除配置 -->
 						if(type==1){
 							document.getElementById('delete').innerText = "正在删除";
@@ -721,12 +707,8 @@
 						localStorage.setItem('lockpassword', lockpassword);
 						localStorage.setItem('lockapi1', lockapi1);
 						localStorage.setItem('lockapi2', lockapi2);
-						if (lockapi1){
-							lockapi = "ZEPP";
-						}
-						if (lockapi2){
-							lockapi = "乐心";
-						}
+						if (lockapi1){ lockapi = "ZEPP"; }
+						if (lockapi2){ lockapi = "乐心"; }
 						const cryptoKey = CryptoJS.enc.Utf8.parse('8765432112345678');
 						const iv = CryptoJS.enc.Utf8.parse('1234567887654321');
 						var dataValue = CryptoJS.AES.encrypt("connect-" + lockuser + "kwazkwaz" + lockpassword + "kwazkwaz" + lockapi + "kwazkwaz" + lockorder, cryptoKey, {
