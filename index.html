@@ -1,147 +1,144 @@
 <!doctype html>
 <html>
 	<head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="shortcut icon" href="https://files.getquicker.net/_icons/FC32D3F57A1D4C065B18EE4FF26420C4C5D1A683.png" type="image/x-icon">
-        <link rel="icon" href="https://files.getquicker.net/_icons/FC32D3F57A1D4C065B18EE4FF26420C4C5D1A683.png" type="image/x-icon">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="shortcut icon" href="https://files.getquicker.net/_icons/FC32D3F57A1D4C065B18EE4FF26420C4C5D1A683.png" type="image/x-icon">
+		<link rel="icon" href="https://files.getquicker.net/_icons/FC32D3F57A1D4C065B18EE4FF26420C4C5D1A683.png" type="image/x-icon">
 		<!--
-		<link rel="stylesheet" href="style.css">
+			<link rel="stylesheet" href="style.css">
 		-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>酷玩运动助手</title>
-        
-
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>酷玩运动助手</title>
 		<style>
-			            * {
-                margin: 0;
-                padding: 0;
-            }
-            body {
-                height: 100vh;
-                width: 100%;
-                overflow: hidden;
-                background-image: url("https://browser6.qhimg.com/dm/3048_1728_/t01075b395dd0873b73.jpg");
-                background-size: cover;  
-                font-family: "montserrat";
-            }
-            .form, .form1 {
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				height: 100vh;
+				width: 100%;
+				overflow: hidden;
+				background-image: url("https://browser6.qhimg.com/dm/3048_1728_/t01075b395dd0873b73.jpg");
+				background-size: cover;  
+				font-family: "montserrat";
+			}
+			.form, .form1 {
 				width: 82%;
 				margin: 3% 4% 1%;
-                
-                background-color: rgb(255 255 255 / 20%);
-                padding: 2% 5% 1%;
-                border-radius: 10px;
-                box-shadow: 0 0 5px #000;
-                text-align: center;
-                font-family: "微软雅黑";
-                background-image: url(https://files.getquicker.net/_sitefiles/_guides/52593d69-c99a-4367-8b98-08d9a65be47e/2023/12/25/223125_202824_0.gif);
-            }
-            .form1 {
-                display:none;
-                margin-top: 1%;
-                padding: 2% 5%;
-                color: #ffffff;
-                font-size: 1.1em;
-                line-height: 26px;
-            }
-            input:-webkit-autofill {
-                transition: background-color 5000s ease-in-out 0s;
-            }
-            input {
-                margin: 8px 5px 8px;
-                height: 24px;
-                background-color: transparent;
-                border-style:none;
-                font-size: 1.2em;
-                outline: none;
-                padding: 1px 0px 1px 12px;
-                text-decoration: none; 
-                display: inline-block; 
-                color: #00fffd !important;
-            }
-            input::-webkit-outer-spin-button,
-            input::-webkit-inner-spin-button {
-                -webkit-appearance: none !important;
-            }
-            input::placeholder{  
-                color: white;  
-            }
-            input[type='number'] {
-                -moz-appearance: textfield;
-            }
-            #tijiao, div>a, .querybutton {  
-                background-color: rgb(0 0 0 / 25%);
-                box-shadow: 0 0 5px #8888;
-                font-size:1.1em;
-                border-radius: 10px;
-                color: white;
-                border: none;
-            }
-            div>a {
-                padding: 5px 9px;
-				margin: 0px 8px;
-                font-size: 16px; 
-                text-decoration:none;
-            }
-            #tijiao, .querybutton {  
-                padding: 5px 20px;
+				background-color: rgb(255 255 255 / 20%);
+				padding: 2% 5% 1%;
+				border-radius: 10px;
+				box-shadow: 0 0 5px #000;
+				text-align: center;
+				font-family: "微软雅黑";
+				background-image: url(https://files.getquicker.net/_sitefiles/_guides/52593d69-c99a-4367-8b98-08d9a65be47e/2023/12/25/223125_202824_0.gif);
+			}
+			.form1 {
+				display:none;
+				margin-top: 1%;
+				padding: 2% 5%;
+				color: #ffffff;
+				font-size: 1.1em;
+				line-height: 26px;
+			}
+			input:-webkit-autofill {
+				transition: background-color 5000s ease-in-out 0s;
+			}
+			input {
+				margin: 8px 5px 8px;
+				height: 24px;
+				background-color: transparent;
+				border-style:none;
+				font-size: 1.2em;
+				outline: none;
+				padding: 1px 0px 1px 12px;
+				text-decoration: none; 
+				display: inline-block; 
+				color: #00fffd !important;
+			}
+			input::-webkit-outer-spin-button,
+			input::-webkit-inner-spin-button {
+				-webkit-appearance: none !important;
+			}
+			input::placeholder{  
+				color: white;  
+			}
+			input[type='number'] {
+				-moz-appearance: textfield;
+			}
+			#tijiao, div>a, .querybutton {  
+				background-color: rgb(0 0 0 / 25%);
+				box-shadow: 0 0 5px #8888;
+				font-size:1.1em;
+				border-radius: 10px;
+				color: white;
+				border: none;
+			}
+			div>a {
+				padding: 5px 5px;
+				margin: 0px 5px;
+				font-size: 16px; 
+				text-decoration:none;
+			}
+			#tijiao, .querybutton {  
+				padding: 5px 20px;
 				margin: 0% 0% 2%;
-            }
-            .datashow{  
-                color: red;
-                padding: 12px 10% 0px 0px;
-                position: fixed;
-                right: 10px;
-                font-size: 1.1em;
-            } 
-            .datashow1{  
-                color: red;
-                font-size: 1.1em;
-            } 
-            #backdata{  
-                color: red;
-                font-size: 1.1em;
-                width: 100%;
-                font-size: 1.1em;
-            } 
-            #fora,#model{
-                margin: 25px auto 15px;
-            }
-            .title {
-                margin:0px 0px 25px 0px;
-                color: #16f3f299;
-            }
-            .titlebutton{
-                background-color:transparent;
-                border:none;
-            }
-            #hand, #account1{
-                background-color: darkred;
-            }
-            #model_auto, #model_lock{
-                display:none;
-            }
-            #QQchat{
-                text-align: center;
-                display: block;
-                margin: 2% auto 0%;
-                width: 25%;
-                background-color: darkred;
-            }
-            div#model_auto>div>input {
-                margin: 8px 5px 8px;
-            }
-            div#model_auto>.datashow {
-                padding: 8px 10% 1px 12px;
-            }
-            #link {
-                text-align: center;
-                display: inline-block;
-                margin: 1% 1% 2%;
-                width: 40%;
-                background-color: #00000088;
-            }
+			}
+			.datashow{  
+				color: red;
+				padding: 12px 10% 0px 0px;
+				position: fixed;
+				right: 10px;
+				font-size: 1.1em;
+			} 
+			.datashow1{  
+				color: red;
+				font-size: 1.1em;
+			} 
+			#backdata{  
+				color: red;
+				font-size: 1.1em;
+				width: 100%;
+				font-size: 1.1em;
+			} 
+			#fora,#model{
+				margin: 25px auto 15px;
+			}
+			.title {
+				margin:0px 0px 25px 0px;
+				color: #16f3f299;
+			}
+			.titlebutton{
+				background-color:transparent;
+				border:none;
+			}
+			#hand, #account1{
+				background-color: darkred;
+			}
+			#model_auto, #model_lock{
+				display:none;
+			}
+			#QQchat{
+				text-align: center;
+				display: block;
+				margin: 2% auto 0%;
+				width: 25%;
+				background-color: darkred;
+			}
+			div#model_auto>div>input {
+				margin: 8px 5px 8px;
+			}
+			div#model_auto>.datashow {
+				padding: 8px 10% 1px 12px;
+			}
+			#link {
+				text-align: center;
+				display: inline-block;
+				margin: 1% 1% 2%;
+				width: 43%;
+				background-color: #00000088;
+			}
 			input[type="radio"] {
 				width: 0.9em;
 				height: 0.9em;
