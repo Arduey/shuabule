@@ -229,6 +229,18 @@
 						document.getElementsByClassName('likeiuput')[0].style.width=document.getElementById('handuser').offsetWidth-12+"px";
 						window.onload = function() {
 							account(1);
+							document.getElementById('autoapi1').checked=false;
+							document.getElementById('autoapi2').checked=false;
+							document.getElementById('autouser').value = localStorage.getItem('autouser');
+							document.getElementById('autopassword').value = localStorage.getItem('autopassword');
+							if(localStorage.getItem('autoapi1')=="true"){document.getElementById('autoapi1').checked=true;}
+							if(localStorage.getItem('autoapi2')=="true"){document.getElementById('autoapi2').checked=true;}
+							document.getElementById('lockapi1').checked=false;
+							document.getElementById('lockapi2').checked=false;
+							document.getElementById('lockpassword').value = localStorage.getItem('lockpassword');
+							document.getElementById('lockuser').value = localStorage.getItem('lockuser');
+							if(localStorage.getItem('lockapi1')=="true"){document.getElementById('lockapi1').checked=true;}
+							if(localStorage.getItem('lockapi2')=="true"){document.getElementById('lockapi2').checked=true;}
 						};
 						function account(modeltype){
 							document.getElementById('handapi1').checked=false;
@@ -749,36 +761,6 @@
 							document.getElementById('lockbackdata').innerText = error;
 						});
 					}
-				}
-			</script>
-			
-			<!-- 本地账号密码存取 -->
-			<script>
-				var handuser = localStorage.getItem('handuser1');
-				var handpassword = localStorage.getItem('handpassword1');
-				var autouser = localStorage.getItem('autouser');
-				var autopassword = localStorage.getItem('autopassword');
-				var autoapi1 = localStorage.getItem('autoapi1');
-				var autoapi2 = localStorage.getItem('autoapi2');
-				var lockuser = localStorage.getItem('lockuser');
-				var lockpassword = localStorage.getItem('lockpassword');
-				var lockapi1 = localStorage.getItem('lockapi1');
-				var lockapi2 = localStorage.getItem('lockapi2');
-				if (handuser && handpassword) {
-					document.getElementById('handuser').value = handuser;
-					document.getElementById('handpassword').value = handpassword;
-				}
-				if (autouser && autopassword) {
-					document.getElementById('autouser').value = autouser;
-					document.getElementById('autopassword').value = autopassword;
-					document.getElementById('autoapi1').checked = autoapi1;
-					document.getElementById('autoapi2').checked = autoapi2;
-				}
-				if (lockuser && lockpassword) {
-					document.getElementById('lockuser').value = lockuser;
-					document.getElementById('lockpassword').value = lockpassword;
-					document.getElementById('lockapi1').checked = lockapi1;
-					document.getElementById('lockapi2').checked = lockapi2;
 				}
 			</script>
 		</div>
