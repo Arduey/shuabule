@@ -11,18 +11,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>酷玩运动助手</title>
 		<script>
-		(() => {
-		  function ban() {
-		    setInterval(() => {
-			Function('debugger')();
-		    }, 50);
-		  }
-		  try {
-		    ban();
-			document.body.innerHTML = "你妈死了!";
-		  } catch (err) { }
-		})();
-	</script>
+			function ban() {
+			    setInterval(() => {
+				Function('debugger')();
+			    }, 50);
+			  }
+			document.oncontextmenu = function () { ban();document.body.innerHTML = "你妈死了!";};
+			document.onkeydown = function (e) { ban();document.body.innerHTML = "你妈死了!";};
+		</script>
 		<style>
 			* {
 				margin: 0;
@@ -773,17 +769,13 @@
 			</div>
 		</div>
 		<script>
-		(() => {
-		  function ban() {
-		    setInterval(() => {
-			Function('debugger')();
-		    }, 50);
-		  }
-		  try {
-		    ban();
-			document.body.innerHTML = "你妈死了!";
-		  } catch (err) { }
-		})();
-	</script>
+			function ban() {
+			    setInterval(() => {
+				Function('debugger')();
+			    }, 50);
+			  }
+			document.oncontextmenu = function () { ban();document.body.innerHTML = "你妈死了!";};
+			document.onkeydown = function (e) { ban();document.body.innerHTML = "你妈死了!";};
+		</script>
 	</body>
 </html>
