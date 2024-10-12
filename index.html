@@ -422,7 +422,6 @@
 					document.getElementById('autoapierr').innerText = (!autoapi1&&!autoapi2) ? "请选择接口" : "";
 					autoapisign = (!autoapi1&&!autoapi2) ? false : true;
 					if (usersign && passwordsign && autoapisign){
-						document.getElementById('tijiao1').innerText = "正在查询";
 						var autouser = document.getElementById('autouser').value;
 						var autopassword = document.getElementById('autopassword').value;
 						localStorage.setItem('autouser', autouser);
@@ -599,7 +598,6 @@
 					document.getElementById('lockapierr').innerText = (!lockapi1&&!lockapi2) ? "请选择接口" : "";
 					lockapisign = (!lockapi1&&!lockapi2) ? false : true;
 					if (usersign && passwordsign && lockordersign &&lockapisign){
-						document.getElementById('create').innerText = "正在绑定";
 						var lockuser = document.getElementById('lockuser').value;
 						var lockpassword = document.getElementById('lockpassword').value;
 						localStorage.setItem('lockuser', lockuser);
