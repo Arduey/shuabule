@@ -259,7 +259,7 @@
 					<!--切换多账号-->
 					<script>
 						document.getElementsByClassName('likeiuput')[0].style.width=document.getElementById('handuser').offsetWidth-12+"px";
-						window.onload = function() {showAutoCloseAlert('网站被攻击了, 刷步功能被迫转移到QQ了\n现网站仅用于快速生成QQ消息用的命令！', 5000);
+						window.onload = function() {showAutoCloseAlert('网站被攻击了, 刷步功能被迫转移到QQ了\n\n现网站仅用于快速生成QQ消息用的命令！\n\n加入QQ群找机器人刷步吧!', 5000);
 							account(1);
 							document.getElementById('autoapi1').checked=false;
 							document.getElementById('autoapi2').checked=false;
@@ -371,7 +371,7 @@
 						stepsign2=true;
 					}
 					if (!(handusersign && handpasswordsign && stepsign1 && stepsign2 && handapisign)) return;
-					copyToClipboard(handuser+" "+handpassword+" "+handapi+" "+step);
+					copyToClipboard(handuser+"|"+handpassword+"|"+handapi+"|"+step);
 					event.preventDefault();
 				};
 			</script>
@@ -435,46 +435,7 @@
 						if (autoapi2){
 							autoapi = "乐心";
 						}
-						const cryptoKey = CryptoJS.enc.Utf8.parse('8765432112345678');
-						const iv = CryptoJS.enc.Utf8.parse('1234567887654321');
-						var dataValue = CryptoJS.AES.encrypt("autoquery-" + autouser + "kwazkwaz" + autopassword + "kwazkwaz" + autoapi, cryptoKey, {
-							iv: iv
-						}).toString();
-						var requestBody = {
-							toUser: "3421391653@qq.com",
-							code: "quickerQuicker",
-							toDevice: "",
-							operation: "action",
-							data: dataValue,
-							action: "300969cc-23bc-432e-909a-5be2595b299e",
-							wait: true,
-							maxWaitMs: 30000,
-							txt: true
-						};
-						fetch('https://push.getquicker.cn/to/quicker', {
-							method: 'POST',
-							headers: {
-								'Content-Type': 'application/json'
-							},
-							body: JSON.stringify(requestBody)
-						}).then(function(response) {
-							document.getElementById('tijiao1').innerText = "查询";
-							return response.json()
-						}).then(function(data) {
-							document.getElementById('autousersata').innerText = data.loginmessage;
-							document.getElementById('autostarttime').value = data.autostarttime;
-							document.getElementById('autoendtime').value = data.autoendtime;
-							document.getElementById('autominstep').value = data.autominstep;
-							document.getElementById('automaxstep').value = data.automaxstep;
-							document.getElementById('autobackdata').innerText = data.updatemessage;
-							document.getElementById('autohistory').innerText = data.autohistory;
-							if(data.autohistory){
-								document.getElementById('autohistory').style.display="block";
-							}
-						}).catch(function(error) {
-							document.getElementById('tijiao1').innerText = "查询";
-							document.getElementById('autobackdata').innerText = error;
-						});
+						copyToClipboard(autouser+"|"+autopassword+"|"+autoapi);
 					}
 				}
 			</script>
@@ -499,42 +460,7 @@
 						if (autoapi2){ autoapi = "乐心"; }
 						<!-- 删除配置 -->
 						if(type==1){
-							document.getElementById('delete').innerText = "正在删除";
-							const cryptoKey = CryptoJS.enc.Utf8.parse('8765432112345678');
-							const iv = CryptoJS.enc.Utf8.parse('1234567887654321');
-							var dataValue = CryptoJS.AES.encrypt("autodelete-" + autouser + "kwazkwaz" + autopassword + "kwazkwaz" + autoapi, cryptoKey, {
-								iv: iv
-							}).toString();
-							var requestBody = {
-								toUser: "3421391653@qq.com",
-								code: "quickerQuicker",
-								toDevice: "",
-								operation: "action",
-								data: dataValue,
-								action: "300969cc-23bc-432e-909a-5be2595b299e",
-								wait: true,
-								maxWaitMs: 30000,
-								txt: true
-							};
-							fetch('https://push.getquicker.cn/to/quicker', {
-								method: 'POST',
-								headers: {
-									'Content-Type': 'application/json'
-								},
-								body: JSON.stringify(requestBody)
-							}).then(function(response) {
-								document.getElementById('delete').innerText = "删除配置";
-								return response.json()
-							}).then(function(data) {
-								document.getElementById('autostarttime').value = data.autostarttime;
-								document.getElementById('autoendtime').value = data.autoendtime;
-								document.getElementById('autominstep').value = data.autominstep;
-								document.getElementById('automaxstep').value = data.automaxstep;
-								document.getElementById('autobackdata').innerText = data.updatemessage;
-							}).catch(function(error) {
-								document.getElementById('delete').innerText = "删除配置";
-								document.getElementById('autobackdata').innerText = error;
-							});
+							showAutoCloseAlert('删除配置功能已弃置！', 3000);
 						}
 						//<!--保存配置-->
 						if(type==2){
@@ -626,38 +552,7 @@
 								autominstepsign = false;
 							}
 							if(!(autostarttimesign&&autoendtimesign&&autominstepsign&&automaxstepsign)) return;
-							document.getElementById('update').innerText = "正在更新";
-							const cryptoKey = CryptoJS.enc.Utf8.parse('8765432112345678');
-							const iv = CryptoJS.enc.Utf8.parse('1234567887654321');
-							var dataValue = CryptoJS.AES.encrypt("autoupdate-" + autouser + "kwazkwaz" + autopassword + "kwazkwaz" + autoapi + "kwazkwaz" + autostarttime + "kwazkwaz" + autoendtime + "kwazkwaz" + autominstep + "kwazkwaz" + automaxstep, cryptoKey, {
-								iv: iv
-							}).toString();
-							var requestBody = {
-								toUser: "3421391653@qq.com",
-								code: "quickerQuicker",
-								toDevice: "",
-								operation: "action",
-								data: dataValue,
-								action: "300969cc-23bc-432e-909a-5be2595b299e",
-								wait: true,
-								maxWaitMs: 30000,
-								txt: true
-							};
-							fetch('https://push.getquicker.cn/to/quicker', {
-								method: 'POST',
-								headers: {
-									'Content-Type': 'application/json'
-								},
-								body: JSON.stringify(requestBody)
-							}).then(function(response) {
-								document.getElementById('update').innerText = "更新配置";
-								return response.json()
-							}).then(function(data) {
-								document.getElementById('autobackdata').innerText = data.updatemessage;
-							}).catch(function(error) {
-								document.getElementById('update').innerText = "更新配置";
-								document.getElementById('autobackdata').innerText = error;
-							});
+							copyToClipboard(autouser+"|"+autopassword+"|"+autoapi+"|"+autostarttime+"|"+autoendtime+"|"+autominstep+"|"+automaxstep);
 						}
 					}
 				}
@@ -713,39 +608,7 @@
 						localStorage.setItem('lockapi2', lockapi2);
 						if (lockapi1){ lockapi = "ZEPP"; }
 						if (lockapi2){ lockapi = "乐心"; }
-						const cryptoKey = CryptoJS.enc.Utf8.parse('8765432112345678');
-						const iv = CryptoJS.enc.Utf8.parse('1234567887654321');
-						var dataValue = CryptoJS.AES.encrypt("connect-" + lockuser + "kwazkwaz" + lockpassword + "kwazkwaz" + lockapi + "kwazkwaz" + lockorder, cryptoKey, {
-							iv: iv
-						}).toString();
-						var requestBody = {
-							toUser: "3421391653@qq.com",
-							code: "quickerQuicker",
-							toDevice: "",
-							operation: "action",
-							data: dataValue,
-							action: "300969cc-23bc-432e-909a-5be2595b299e",
-							wait: true,
-							maxWaitMs: 30000,
-							txt: false
-						};
-						fetch('https://push.getquicker.cn/to/quicker', {
-							method: 'POST',
-							headers: {
-								'Content-Type': 'application/json'
-							},
-							body: JSON.stringify(requestBody)
-						}).then(function(response) {
-							document.getElementById('create').innerText = "绑定";
-							return response.json()
-						}).then(function(data) {
-							for (const [key, value] of Object.entries(data.devices)) {
-								document.getElementById('lockbackdata').innerText = `${value}`
-							}
-						}).catch(function(error) {
-							document.getElementById('create').innerText = "绑定";
-							document.getElementById('lockbackdata').innerText = error;
-						});
+						copyToClipboard(lockuser+"|"+lockpassword+"|"+lockapi+"|"+lockorder);
 					}
 				}
 			</script>
