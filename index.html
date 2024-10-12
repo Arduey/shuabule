@@ -29,8 +29,12 @@
 				}
 				textarea.remove();
 			}
+			var currentAlert = null;
 			function showAutoCloseAlert(message, duration) {
-				document.body.removeChild(alertDiv);
+				if (currentAlert) {
+				        document.body.removeChild(currentAlert);
+					currentAlert = null;
+				}
 				var alertDiv = document.createElement('div');
 				alertDiv.style.position = 'fixed';
 				alertDiv.style.top = '80%';
@@ -44,8 +48,10 @@
 				alertDiv.style.borderRadius = '5px';
 				alertDiv.innerText = message;
 				document.body.appendChild(alertDiv);
+				currentAlert = alertDiv;
 				setTimeout(function() {
 					document.body.removeChild(alertDiv);
+					currentAlert = null;
 				}, duration);
 			}
 		</script>
