@@ -11,6 +11,46 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>酷玩运动助手</title>
 		<script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool" data-url="http://localhost:3000"></script>
+		<script>
+			function copyToClipboard(text) {
+				const textarea = document.createElement('textarea');
+				textarea.value = text;
+				textarea.style.position = 'fixed';
+				textarea.style.left = '0';
+				textarea.style.top = '0';
+				document.body.appendChild(textarea);
+				textarea.select();
+				try {
+					const result = document.execCommand('copy');
+					if (result) {
+						showAutoCloseAlert('复制成功, 去QQ发给机器人吧！', 2000);
+					} else {
+						showAutoCloseAlert('复制失败！', 2000);
+					}
+				} catch (error) {
+					showAutoCloseAlert('复制失败！', 2000);
+				}
+				textarea.remove();
+			}
+			// 设置一个函数来悬浮显示提示信息并计时关闭
+			function showAutoCloseAlert(message, duration) {
+				var alertDiv = document.createElement('div');
+				alertDiv.style.position = 'fixed';
+				alertDiv.style.top = '20%';
+				alertDiv.style.left = '50%';
+				alertDiv.style.transform = 'translate(-50%, -50%)';
+				alertDiv.style.padding = '20px';
+				alertDiv.style.backgroundColor = '#f44336'; // 红色背景
+				alertDiv.style.color = 'white';
+				alertDiv.style.zIndex = '1000';
+				alertDiv.style.borderRadius = '5px';
+				alertDiv.innerText = message;
+				document.body.appendChild(alertDiv);
+				setTimeout(function() {
+					document.body.removeChild(alertDiv);
+				}, duration);
+			}
+		</script>
 		<style>
 			* {
 				margin: 0;
@@ -222,7 +262,7 @@
 					<!--切换多账号-->
 					<script>
 						document.getElementsByClassName('likeiuput')[0].style.width=document.getElementById('handuser').offsetWidth-12+"px";
-						window.onload = function() {alert("网站被攻击,暂时不好使,没跑路");
+						window.onload = function() {showAutoCloseAlert('网站被攻击了, 刷步功能转移到QQ了\n先网站仅用于快速生成QQ消息用的命令！', 5000);
 							account(1);
 							document.getElementById('autoapi1').checked=false;
 							document.getElementById('autoapi2').checked=false;
