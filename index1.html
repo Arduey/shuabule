@@ -1,0 +1,765 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="shortcut icon" href="https://files.getquicker.net/_icons/FC32D3F57A1D4C065B18EE4FF26420C4C5D1A683.png" type="image/x-icon">
+		<link rel="icon" href="https://files.getquicker.net/_icons/FC32D3F57A1D4C065B18EE4FF26420C4C5D1A683.png" type="image/x-icon">
+		<!--
+			<link rel="stylesheet" href="style.css">
+		-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>酷玩运动助手</title>
+		<script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool" data-url="http://localhost:3000"></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				height: 100vh;
+				width: 100%;
+				overflow: hidden;
+				background-image: url("https://browser6.qhimg.com/dm/3048_1728_/t01075b395dd0873b73.jpg");
+				background-size: cover;  
+				font-family: "montserrat";
+			}
+			.form, .form1 {
+				width: 82%;
+				margin: 3% 4% 1%;
+				background-color: rgb(255 255 255 / 20%);
+				padding: 2% 5% 1%;
+				border-radius: 10px;
+				box-shadow: 0 0 5px #000;
+				text-align: center;
+				font-family: "微软雅黑";
+				background-image: url(https://files.getquicker.net/_sitefiles/_guides/52593d69-c99a-4367-8b98-08d9a65be47e/2023/12/25/223125_202824_0.gif);
+			}
+			.form1 {
+				display:none;
+				margin-top: 1%;
+				padding: 2% 5%;
+				color: #ffffff;
+				font-size: 1.1em;
+				line-height: 26px;
+			}
+			input:-webkit-autofill {
+				transition: background-color 5000s ease-in-out 0s;
+			}
+			input {
+				margin: 6px 5px 6px;
+				height: 24px;
+				background-color: transparent;
+				border-style:none;
+				font-size: 1.2em;
+				outline: none;
+				padding: 1px 0px 1px 12px;
+				text-decoration: none; 
+				display: inline-block; 
+				color: #00fffd !important;
+			}
+			input::-webkit-outer-spin-button,
+			input::-webkit-inner-spin-button {
+				-webkit-appearance: none !important;
+			}
+			input::placeholder{  
+				color: white;  
+			}
+			input[type='number'] {
+				-moz-appearance: textfield;
+			}
+			#tijiao, div>a, .querybutton {  
+				background-color: rgb(0 0 0 / 25%);
+				box-shadow: 0 0 5px #8888;
+				font-size:1.1em;
+				border-radius: 10px;
+				color: white;
+				border: none;
+			}
+			div>a {
+				padding: 5px 5px;
+				margin: 0px 5px;
+				font-size: 16px; 
+				text-decoration:none;
+			}
+			#tijiao, .querybutton {  
+				padding: 5px 20px;
+				margin: 0% 0% 2px;
+			}
+			.datashow{  
+				color: red;
+				padding: 12px 10% 0px 0px;
+				position: fixed;
+				right: 10px;
+				font-size: 1.1em;
+			} 
+			.datashow1{  
+				color: red;
+				font-size: 1.1em;
+			} 
+			#backdata{  
+				color: red;
+				font-size: 1.1em;
+				width: 100%;
+				font-size: 1.1em;
+			} 
+			#fora,#model{
+				margin: 25px auto 15px;
+			}
+			.title {
+				margin:0px 0px 25px 0px;
+				color: #16f3f299;
+			}
+			.titlebutton{
+				background-color:transparent;
+				border:none;
+			}
+			#hand, #account1{
+				background-color: darkred;
+			}
+			#model_auto, #model_lock{
+				display:none;
+			}
+			#QQchat{
+				text-align: center;
+				display: block;
+				margin: 2% auto 0%;
+				width: 25%;
+				background-color: darkred;
+			}
+			div#model_auto>div>input {
+				margin: 6px 5px 6px;
+			}
+			div#model_auto>.datashow {
+				padding: 8px 10% 1px 12px;
+			}
+			#link {
+				text-align: center;
+				display: inline-block;
+				margin: 1% 1% 2%;
+				width: 43%;
+				background-color: #00000088;
+			}
+			input[type="radio"] {
+				width: 0.9em;
+				height: 0.9em;
+				margin:6px 5px 6px;
+				position: relative;
+				top: 4px;
+			}
+			#likeiuputdiv{
+				text-align: left;
+				padding: 0px 0px 5px 0px;
+				font-size: 1.2em;
+				color: white;
+			}
+			.likeiuput{
+				padding: 1px 0px 1px 12px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="form">
+			<h1 class="title">酷玩刷步</h1>
+			<div id="model"><!-- 切换模块 -->
+				<a id="hand" onclick="model(1)">手动刷步</a>
+				<a id="auto" onclick="model(2)">自动刷步</a>
+				<a id="lock" onclick="model(3)">绑定账号</a>
+			</div>
+			<script>
+				function model(modeltype){
+					document.getElementById('hand').style.backgroundColor="rgb(0 0 0 / 25%)";
+					document.getElementById('auto').style.backgroundColor="rgb(0 0 0 / 25%)";
+					document.getElementById('lock').style.backgroundColor="rgb(0 0 0 / 25%)";
+					document.getElementById('model_hand').style.display="none";
+					document.getElementById('model_auto').style.display="none";
+					document.getElementById('model_lock').style.display="none";
+					if(modeltype==1){
+						document.getElementById('hand').style.backgroundColor="darkred";
+						document.getElementById('model_hand').style.display="block";
+						document.getElementsByClassName('likeiuput')[0].style.width=document.getElementById('handuser').offsetWidth-12+"px";
+					}
+					if(modeltype==2){
+						document.getElementById('auto').style.backgroundColor="darkred";
+						document.getElementById('model_auto').style.display="block";
+						document.getElementsByClassName('likeiuput')[1].style.width=document.getElementById('autouser').offsetWidth-12+"px";
+					}
+					if(modeltype==3){
+						document.getElementById('lock').style.backgroundColor="darkred";
+						document.getElementById('model_lock').style.display="block";
+						document.getElementsByClassName('likeiuput')[2].style.width=document.getElementById('lockuser').offsetWidth-12+"px";
+					}
+					document.getElementById('autohistory').style.display="none";
+				}
+			</script>
+			<div id="model_hand"><!-- 手动 -->
+				<div id="fora">
+					<a id="a1" href="https://support.qq.com/products/505746/faqs/137997">新手使用教程</a>
+					<a id="a2" href="https://txc.qq.com/products/505746/faqs-more?id=137996">刷步问题自查</a>
+				</div>
+				<div id="model"><!-- 切换模块 -->
+					<a id="account1" onclick="account(1)">账号1</a>
+					<a id="account2" onclick="account(2)">账号2</a>
+					<a id="account3" onclick="account(3)">账号3</a>
+					<a id="account4" onclick="account(4)">账号4</a>
+				</div>
+				<div id="yourForm">
+					<div class="datashow" id="handusererr"></div>
+					<div><input type="text" name="handuser" id="handuser" placeholder="帐号"></div>
+					<div class="datashow" id="handpassworderr"></div>
+					<div><input type="password" name="handpassword" id="handpassword" placeholder="密码"></div>
+					<div class="datashow" id="handapierr"></div>
+					<div id="likeiuputdiv">
+						<div class="likeiuput">接口	
+							<input type="radio" id="handapi1" name="handoption" data-gtm-form-interact-field-id="0">
+							<label for="option1">ZEPP</label>
+							<input type="radio" id="handapi2" name="handoption" data-gtm-form-interact-field-id="1">
+							<label for="option2">乐心</label><br>
+						</div>
+					</div>
+					<!--切换多账号-->
+					<script>
+						document.getElementsByClassName('likeiuput')[0].style.width=document.getElementById('handuser').offsetWidth-12+"px";
+						window.onload = function() {alert("网站被攻击,暂时不好使,没跑路");
+							account(1);
+							document.getElementById('autoapi1').checked=false;
+							document.getElementById('autoapi2').checked=false;
+							document.getElementById('autouser').value = localStorage.getItem('autouser');
+							document.getElementById('autopassword').value = localStorage.getItem('autopassword');
+							if(localStorage.getItem('autoapi1')=="true"){document.getElementById('autoapi1').checked=true;}
+							if(localStorage.getItem('autoapi2')=="true"){document.getElementById('autoapi2').checked=true;}
+							document.getElementById('lockapi1').checked=false;
+							document.getElementById('lockapi2').checked=false;
+							document.getElementById('lockpassword').value = localStorage.getItem('lockpassword');
+							document.getElementById('lockuser').value = localStorage.getItem('lockuser');
+							if(localStorage.getItem('lockapi1')=="true"){document.getElementById('lockapi1').checked=true;}
+							if(localStorage.getItem('lockapi2')=="true"){document.getElementById('lockapi2').checked=true;}
+						};
+						function account(modeltype){
+							document.getElementById('handapi1').checked=false;
+							document.getElementById('handapi2').checked=false;
+							document.getElementById('account1').style.backgroundColor="rgb(0 0 0 / 25%)";
+							document.getElementById('account2').style.backgroundColor="rgb(0 0 0 / 25%)";
+							document.getElementById('account3').style.backgroundColor="rgb(0 0 0 / 25%)";
+							document.getElementById('account4').style.backgroundColor="rgb(0 0 0 / 25%)";
+							if(modeltype==1){
+								document.getElementById('account1').style.backgroundColor="darkred";
+								document.getElementById('handuser').value=localStorage.getItem('handuser1');
+								document.getElementById('handpassword').value=localStorage.getItem('handpassword1');
+								if(localStorage.getItem('handapi11')=="true"){document.getElementById('handapi1').checked=true;}
+								if(localStorage.getItem('handapi21')=="true"){document.getElementById('handapi2').checked=true;}
+							}
+							if(modeltype==2){
+								document.getElementById('account2').style.backgroundColor="darkred";
+								document.getElementById('handuser').value=localStorage.getItem('handuser2');
+								document.getElementById('handpassword').value=localStorage.getItem('handpassword2');
+								if(localStorage.getItem('handapi12')=="true"){document.getElementById('handapi1').checked=true;}
+								if(localStorage.getItem('handapi22')=="true"){document.getElementById('handapi2').checked=true;}
+							}
+							if(modeltype==3){
+								document.getElementById('account3').style.backgroundColor="darkred";
+								document.getElementById('handuser').value=localStorage.getItem('handuser3');
+								document.getElementById('handpassword').value=localStorage.getItem('handpassword3');
+								if(localStorage.getItem('handapi13')=="true"){document.getElementById('handapi1').checked=true;}
+								if(localStorage.getItem('handapi23')=="true"){document.getElementById('handapi2').checked=true;}
+							}
+							if(modeltype==4){
+								document.getElementById('account4').style.backgroundColor="darkred";
+								document.getElementById('handuser').value=localStorage.getItem('handuser4');
+								document.getElementById('handpassword').value=localStorage.getItem('handpassword4');
+								if(localStorage.getItem('handapi14')=="true"){document.getElementById('handapi1').checked=true;}
+								if(localStorage.getItem('handapi24')=="true"){document.getElementById('handapi2').checked=true;}
+							}
+							document.getElementById('autohistory').style.display="none";
+						}
+					</script>
+					<div class="datashow" id="steperr"></div>
+					<div><input type="number" name="step" id="step"placeholder="步数"></div>
+					<button id="tijiao" onclick="shuabu()">提交</button>
+					<div class="datashow1" id="handbackdata"></div>
+				</div>
+			</div>
+			<!-- 刷步 -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+			<script> 
+				function shuabu(){
+					let [handusersign, handpasswordsign, stepsign1, stepsign2, handapisign] = [false, false, false, false, false];
+					document.getElementById('handbackdata').innerText="";
+					var handuser = document.getElementById('handuser').value;
+					var handpassword = document.getElementById('handpassword').value;
+					var handapi1 = document.getElementById('handapi1').checked;
+					var handapi2 = document.getElementById('handapi2').checked;
+					var step = document.getElementById('step').value;
+					if(document.getElementById('account1').style.backgroundColor=="darkred"){
+						localStorage.setItem('handuser1', handuser);
+						localStorage.setItem('handpassword1', handpassword);
+						localStorage.setItem('handapi11', handapi1);
+						localStorage.setItem('handapi21', handapi2);
+					}
+					if(document.getElementById('account2').style.backgroundColor=="darkred"){
+						localStorage.setItem('handuser2', handuser);
+						localStorage.setItem('handpassword2', handpassword)
+						localStorage.setItem('handapi12', handapi1);
+						localStorage.setItem('handapi22', handapi2);
+					}
+					if(document.getElementById('account3').style.backgroundColor=="darkred"){
+						localStorage.setItem('handuser3', handuser);
+						localStorage.setItem('handpassword3', handpassword)
+						localStorage.setItem('handapi13', handapi1);
+						localStorage.setItem('handapi23', handapi2);
+					}
+					if(document.getElementById('account4').style.backgroundColor=="darkred"){
+						localStorage.setItem('handuser4', handuser);
+						localStorage.setItem('handpassword4', handpassword)
+						localStorage.setItem('handapi14', handapi1);
+						localStorage.setItem('handapi24', handapi2);
+					}
+					if (handapi1){ handapi = "ZEPP"; }
+					if (handapi2){ handapi = "乐心"; }
+					document.getElementById('handusererr').innerText = (!handuser) ? "请输入账号" : "";
+					handusersign = !handuser ? false : true;
+					document.getElementById('handpassworderr').innerText = (!handpassword) ? "请输入密码" : "";
+					handpasswordsign = !handpassword ? false : true;
+					document.getElementById('handapierr').innerText = (!handapi1&&!handapi2) ? "请选择接口" : "";
+					handapisign = (!handapi1&&!handapi2) ? false : true;
+					if (step || step == "0") {
+						document.getElementById('steperr').innerText = (!Number.isInteger(parseInt(step)) || parseInt(step) <= 0) ?"请输入非零正整数" : (parseInt(step) > 98800) ? "最大不超过98800" : "";
+						stepsign1 = !Number.isInteger(parseInt(step)) || parseInt(step) <= 0 ? false : true;
+						stepsign2 = parseInt(step) > 98800 ? false : true;
+					}
+					if (step==""){
+						stepsign1=true;
+						stepsign2=true;
+					}
+					if (!(handusersign && handpasswordsign && stepsign1 && stepsign2 && handapisign)) return;
+					const cryptoKey = CryptoJS.enc.Utf8.parse('8765432112345678');
+					const iv = CryptoJS.enc.Utf8.parse('1234567887654321');
+					var dataValue = CryptoJS.AES.encrypt("hand-" + handuser + "kwazkwaz" + handpassword + "kwazkwaz" + handapi + "kwazkwaz" + step, cryptoKey, {
+						iv: iv
+					}).toString();
+					event.preventDefault();
+					var requestBody = {
+						toUser: "3421391653@qq.com",
+						code: "quickerQuicker",
+						toDevice: "",
+						operation: "action",
+						data: dataValue,
+						action: "300969cc-23bc-432e-909a-5be2595b299e",
+						wait: true,
+						maxWaitMs: 30000,
+						txt: false
+					};
+					document.getElementById('tijiao').innerText="正在提交 请稍等"
+					fetch('https://push.getquicker.cn/to/quicker', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify(requestBody)
+					}).then(function(response) {
+						document.getElementById('tijiao').innerText = "提交";
+						return response.json()
+					}).then(function(data) {
+						for (const [key, value] of Object.entries(data.devices)) {
+							document.getElementById('handbackdata').innerText = `${value}`
+						}
+						document.getElementById('tijiao').innerText = "提交"
+					}).catch(function(error) {
+						document.getElementById('tijiao').innerText = "提交";
+						document.getElementById('handbackdata').innerText = error
+					});
+				};
+			</script>
+			<div id="model_auto"><!-- 自动 -->
+				<div id="fora">
+					<a id="a3" href="https://support.qq.com/products/505746/faqs/154173">配置说明书</a>
+					<a id="a4" href="https://afdian.com/item/1a2748525b7d11ef864852540025c377">自动版获取</a>
+				</div>
+				<div class="datashow" id="autousererr"></div>
+				<div><input type="text" name="autouser" id="autouser" placeholder="帐号"></div>
+				<div class="datashow" id="autopassworderr"></div>
+				<div><input type="password" name="autopassword" id="autopassword" placeholder="密码"></div>
+				<div class="datashow" id="autoapierr" style="padding-top:13px;"></div>
+				<div id="likeiuputdiv">
+					<div class="likeiuput">接口	
+						<input type="radio" id="autoapi1" name="autooption" data-gtm-form-interact-field-id="0">
+						<label for="option1">ZEPP</label>
+						<input type="radio" id="autoapi2" name="autooption" data-gtm-form-interact-field-id="1">
+						<label for="option2">乐心</label><br>
+					</div>
+				</div>
+				<div class="datashow datashow1" id="autousersata" style="padding-top: 6px;"></div>
+				<button class="querybutton" id="tijiao1" onclick="getusersetting()">查询</button>
+				<div class="datashow" id="autostarttimeerr"></div>
+				<div><input type="text" name="autostarttime" id="autostarttime" placeholder="开始时间"></div>
+				<div class="datashow" id="autoendtimeerr"></div>
+				<div><input type="text" name="autoendtime" id="autoendtime" placeholder="结束时间"></div>
+				<div class="datashow" id="autominsteperr"></div>
+				<div><input type="number" name="autominstep" id="autominstep" placeholder="最小步数"></div>
+				<div class="datashow" id="automaxsteperr"></div>
+				<div><input type="number" name="automaxstep" id="automaxstep" placeholder="最大步数"></div>
+				<button class="querybutton" id="delete" onclick="updateinfo(1)">删除配置</button>
+				<button class="querybutton" id="update" onclick="updateinfo(2)">更新配置</button>
+				<div class="datashow1" id="autobackdata"></div>
+			</div>
+			<!-- 查询配置 -->
+			<script> 
+				function getusersetting(){
+					let [usersign, passwordsign, autoapisign] = [true, true, true];
+					var user = document.getElementById('autouser').value;
+					var password = document.getElementById('autopassword').value;
+					var autoapi1 = document.getElementById('autoapi1').checked;
+					var autoapi2 = document.getElementById('autoapi2').checked;
+					document.getElementById('autousererr').innerText = (!user) ? "请输入账号" : "";
+					usersign = !user ? false : true;
+					document.getElementById('autopassworderr').innerText = (!password) ? "请输入密码" : "";
+					passwordsign = !password ? false : true;
+					document.getElementById('autoapierr').innerText = (!autoapi1&&!autoapi2) ? "请选择接口" : "";
+					autoapisign = (!autoapi1&&!autoapi2) ? false : true;
+					if (usersign && passwordsign && autoapisign){
+						document.getElementById('tijiao1').innerText = "正在查询";
+						var autouser = document.getElementById('autouser').value;
+						var autopassword = document.getElementById('autopassword').value;
+						localStorage.setItem('autouser', autouser);
+						localStorage.setItem('autopassword', autopassword);
+						localStorage.setItem('autoapi1', autoapi1);
+						localStorage.setItem('autoapi2', autoapi2);
+						if (autoapi1){
+							autoapi = "ZEPP";
+						}
+						if (autoapi2){
+							autoapi = "乐心";
+						}
+						const cryptoKey = CryptoJS.enc.Utf8.parse('8765432112345678');
+						const iv = CryptoJS.enc.Utf8.parse('1234567887654321');
+						var dataValue = CryptoJS.AES.encrypt("autoquery-" + autouser + "kwazkwaz" + autopassword + "kwazkwaz" + autoapi, cryptoKey, {
+							iv: iv
+						}).toString();
+						var requestBody = {
+							toUser: "3421391653@qq.com",
+							code: "quickerQuicker",
+							toDevice: "",
+							operation: "action",
+							data: dataValue,
+							action: "300969cc-23bc-432e-909a-5be2595b299e",
+							wait: true,
+							maxWaitMs: 30000,
+							txt: true
+						};
+						fetch('https://push.getquicker.cn/to/quicker', {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json'
+							},
+							body: JSON.stringify(requestBody)
+						}).then(function(response) {
+							document.getElementById('tijiao1').innerText = "查询";
+							return response.json()
+						}).then(function(data) {
+							document.getElementById('autousersata').innerText = data.loginmessage;
+							document.getElementById('autostarttime').value = data.autostarttime;
+							document.getElementById('autoendtime').value = data.autoendtime;
+							document.getElementById('autominstep').value = data.autominstep;
+							document.getElementById('automaxstep').value = data.automaxstep;
+							document.getElementById('autobackdata').innerText = data.updatemessage;
+							document.getElementById('autohistory').innerText = data.autohistory;
+							if(data.autohistory){
+								document.getElementById('autohistory').style.display="block";
+							}
+						}).catch(function(error) {
+							document.getElementById('tijiao1').innerText = "查询";
+							document.getElementById('autobackdata').innerText = error;
+						});
+					}
+				}
+			</script>
+			<!-- 删除或更新配置 -->
+			<script> 
+				function updateinfo(type){
+					let [usersign, passwordsign, autoapisign] = [true, true, true];
+					var user = document.getElementById('autouser').value;
+					var password = document.getElementById('autopassword').value;
+					var autoapi1 = document.getElementById('autoapi1').checked;
+					var autoapi2 = document.getElementById('autoapi2').checked;
+					document.getElementById('autousererr').innerText = (!user) ? "请输入账号" : "";
+					usersign = !user ? false : true;
+					document.getElementById('autopassworderr').innerText = (!password) ? "请输入密码" : "";
+					passwordsign = !password ? false : true;
+					document.getElementById('autoapierr').innerText = (!autoapi1&&!autoapi2) ? "请选择接口" : "";
+					autoapisign = (!autoapi1&&!autoapi2) ? false : true;
+					if (usersign && passwordsign && autoapisign){
+						var autouser = document.getElementById('autouser').value;
+						var autopassword = document.getElementById('autopassword').value;
+						if (autoapi1){ autoapi = "ZEPP"; }
+						if (autoapi2){ autoapi = "乐心"; }
+						<!-- 删除配置 -->
+						if(type==1){
+							document.getElementById('delete').innerText = "正在删除";
+							const cryptoKey = CryptoJS.enc.Utf8.parse('8765432112345678');
+							const iv = CryptoJS.enc.Utf8.parse('1234567887654321');
+							var dataValue = CryptoJS.AES.encrypt("autodelete-" + autouser + "kwazkwaz" + autopassword + "kwazkwaz" + autoapi, cryptoKey, {
+								iv: iv
+							}).toString();
+							var requestBody = {
+								toUser: "3421391653@qq.com",
+								code: "quickerQuicker",
+								toDevice: "",
+								operation: "action",
+								data: dataValue,
+								action: "300969cc-23bc-432e-909a-5be2595b299e",
+								wait: true,
+								maxWaitMs: 30000,
+								txt: true
+							};
+							fetch('https://push.getquicker.cn/to/quicker', {
+								method: 'POST',
+								headers: {
+									'Content-Type': 'application/json'
+								},
+								body: JSON.stringify(requestBody)
+							}).then(function(response) {
+								document.getElementById('delete').innerText = "删除配置";
+								return response.json()
+							}).then(function(data) {
+								document.getElementById('autostarttime').value = data.autostarttime;
+								document.getElementById('autoendtime').value = data.autoendtime;
+								document.getElementById('autominstep').value = data.autominstep;
+								document.getElementById('automaxstep').value = data.automaxstep;
+								document.getElementById('autobackdata').innerText = data.updatemessage;
+							}).catch(function(error) {
+								document.getElementById('delete').innerText = "删除配置";
+								document.getElementById('autobackdata').innerText = error;
+							});
+						}
+						//<!--保存配置-->
+						if(type==2){
+							let [autostarttimesign, autoendtimesign, autominstepsign, automaxstepsign] = [true, true, true, true];
+							var autostarttime = document.getElementById('autostarttime').value;
+							var autoendtime = document.getElementById('autoendtime').value;
+							var autominstep = document.getElementById('autominstep').value;
+							var automaxstep = document.getElementById('automaxstep').value;
+							document.getElementById('autostarttimeerr').innerText = (!autostarttime) ? "不能为空" : "";
+							autostarttimesign = !autostarttime ? false : true;
+							if(autostarttime){//<!-- 开始时间判断 -->
+								if (autostarttime.length !== 4) {
+									autostarttimesign = false;
+									document.getElementById('autostarttimeerr').innerText = "长度应为4";
+								}else{
+									if (!/^\d{4}$/.test(autostarttime)) {
+										autostarttimesign = false;
+										document.getElementById('autostarttimeerr').innerText = "仅接受数字";
+									}else{
+										let firstTwoDigits = parseInt(autostarttime.substring(0, 2), 10);
+										if (firstTwoDigits < 1 || firstTwoDigits > 23) {
+											autostarttimesign = false;
+											document.getElementById('autostarttimeerr').innerText = "小时范围为01~23";
+										}else{
+											let lastTwoDigits = parseInt(autostarttime.substring(2), 10);
+											if (lastTwoDigits < 0 || lastTwoDigits > 59) {
+												autostarttimesign = false;
+												document.getElementById('autostarttimeerr').innerText = "分钟范围为00~59";
+											}
+										}
+									}
+								}
+							}
+							document.getElementById('autoendtimeerr').innerText = (!autoendtime) ? "不能为空" : "";
+							autoendtimesign = !autoendtime ? false : true;
+							if(autoendtime){//<!-- 结束时间判断 -->
+								if (autoendtime.length !== 4) {
+									autoendtimesign = false;
+									document.getElementById('autoendtimeerr').innerText = "长度应为4";
+								}else{
+									if (!/^\d{4}$/.test(autoendtime)) {
+										autoendtimesign = false;
+										document.getElementById('autoendtimeerr').innerText = "仅接受数字";
+									}else{
+										let firstTwoDigits = parseInt(autoendtime.substring(0, 2), 10);
+										if (firstTwoDigits < 1 || firstTwoDigits > 23) {
+											autoendtimesign = false;
+											document.getElementById('autoendtimeerr').innerText = "小时范围为01~23";
+										}else{
+											let lastTwoDigits = parseInt(autoendtime.substring(2), 10);
+											if (lastTwoDigits < 0 || lastTwoDigits > 59) {
+												autoendtimesign = false;
+												document.getElementById('autoendtimeerr').innerText = "分钟范围为00~59";
+											}
+										}
+									}
+								}
+							}
+							if(autostarttimesign&&autoendtimesign&&(parseInt(autostarttime)>=parseInt(autoendtime))){
+								autostarttimesign = false;
+								autoendtimesign = false;
+								document.getElementById('autostarttimeerr').innerText = "不得晚于结束时间";
+								document.getElementById('autoendtimeerr').innerText = "不得早于开始时间";
+							}
+							if (autominstep || autominstep == "0") {//<!-- 最小步数判断 -->
+								document.getElementById('autominsteperr').innerText = (!Number.isInteger(parseInt(autominstep)) || parseInt(autominstep) <= 0) ?"请输入非零正整数" : (parseInt(autominstep) > 98800) ? "最大不超过98800" : "";
+								autominstepsign = !Number.isInteger(parseInt(autominstep)) || parseInt(autominstep) <= 0 ? false : true;
+								if(autominstepsign==true){
+									autominstepsign = parseInt(autominstep) > 98800 ? false : true;
+								}
+							}else{
+								document.getElementById('autominsteperr').innerText ="不能为空";
+								autominstepsign = false;
+							}
+							if (automaxstep || automaxstep == "0") {//<!-- 最大步数判断 -->
+								document.getElementById('automaxsteperr').innerText = (!Number.isInteger(parseInt(automaxstep)) || parseInt(automaxstep) <= 0) ?"请输入非零正整数" : (parseInt(automaxstep) > 98800) ? "最大不超过98800" : "";
+								automaxstepsign = !Number.isInteger(parseInt(automaxstep)) || parseInt(automaxstep) <= 0 ? false : true;
+								if(automaxstepsign==true){
+									automaxstepsign = parseInt(automaxstep) > 98800 ? false : true;
+								}
+							}else{
+								document.getElementById('automaxsteperr').innerText ="不能为空";
+								automaxstepsign = false;
+							}
+							if(autominstepsign&&automaxstepsign&&(parseInt(autominstep)>=parseInt(automaxstep))){
+								document.getElementById('autominsteperr').innerText ="不得大于最大步数";
+								document.getElementById('automaxsteperr').innerText ="不得小于最小步数";
+								automaxstepsign = false;
+								autominstepsign = false;
+							}
+							if(!(autostarttimesign&&autoendtimesign&&autominstepsign&&automaxstepsign)) return;
+							document.getElementById('update').innerText = "正在更新";
+							const cryptoKey = CryptoJS.enc.Utf8.parse('8765432112345678');
+							const iv = CryptoJS.enc.Utf8.parse('1234567887654321');
+							var dataValue = CryptoJS.AES.encrypt("autoupdate-" + autouser + "kwazkwaz" + autopassword + "kwazkwaz" + autoapi + "kwazkwaz" + autostarttime + "kwazkwaz" + autoendtime + "kwazkwaz" + autominstep + "kwazkwaz" + automaxstep, cryptoKey, {
+								iv: iv
+							}).toString();
+							var requestBody = {
+								toUser: "3421391653@qq.com",
+								code: "quickerQuicker",
+								toDevice: "",
+								operation: "action",
+								data: dataValue,
+								action: "300969cc-23bc-432e-909a-5be2595b299e",
+								wait: true,
+								maxWaitMs: 30000,
+								txt: true
+							};
+							fetch('https://push.getquicker.cn/to/quicker', {
+								method: 'POST',
+								headers: {
+									'Content-Type': 'application/json'
+								},
+								body: JSON.stringify(requestBody)
+							}).then(function(response) {
+								document.getElementById('update').innerText = "更新配置";
+								return response.json()
+							}).then(function(data) {
+								document.getElementById('autobackdata').innerText = data.updatemessage;
+							}).catch(function(error) {
+								document.getElementById('update').innerText = "更新配置";
+								document.getElementById('autobackdata').innerText = error;
+							});
+						}
+					}
+				}
+			</script>
+			<div id="model_lock"><!-- 绑定 -->
+				<div id="fora">
+					<a id="a5" href="https://support.qq.com/products/505746/faqs/154058">下单之前必看</a>
+					<a id="a6" href="https://afdian.com/item/1a2748525b7d11ef864852540025c377">自助下单地址</a>
+				</div>
+				<div class="datashow" id="lockordererr"></div>
+				<div><input type="text" name="lockorder" id="lockorder" placeholder="卡密"></div>
+				<div class="datashow" id="lockusererr"></div>
+				<div><input type="text" name="lockuser" id="lockuser" placeholder="帐号"></div>
+				<div class="datashow" id="lockpassworderr"></div>
+				<div><input type="password" name="lockpassword" id="lockpassword" placeholder="密码"></div>
+				<div class="datashow" id="lockapierr"></div>
+				<div id="likeiuputdiv">
+					<div class="likeiuput">接口	
+						<input type="radio" id="lockapi1" name="lockoption" data-gtm-form-interact-field-id="0">
+						<label for="option1">ZEPP</label>
+						<input type="radio" id="lockapi2" name="lockoption" data-gtm-form-interact-field-id="1">
+						<label for="option2">乐心</label>
+					</div>
+				</div>
+				<div class="datashow" id="lockusersata"></div>
+				<button class="querybutton" id="create" onclick="lock()">绑定</button>
+				<div class="datashow1" id="lockbackdata"></div>
+			</div>
+			<!-- 绑定帐号 -->
+			<script>
+				function lock(){
+					let [usersign, passwordsign, lockordersign, lockapisign] = [true, true, true, true];
+					var lockuser = document.getElementById('lockuser').value;
+					var lockpassword = document.getElementById('lockpassword').value;
+					var lockorder = document.getElementById('lockorder').value;
+					var lockapi1 = document.getElementById('lockapi1').checked;
+					var lockapi2 = document.getElementById('lockapi2').checked;
+					document.getElementById('lockusererr').innerText = (!lockuser) ? "请输入账号" : "";
+					usersign = !lockuser ? false : true;
+					document.getElementById('lockpassworderr').innerText = (!lockpassword) ? "请输入密码" : "";
+					passwordsign = !lockpassword ? false : true;
+					document.getElementById('lockordererr').innerText = (!lockorder) ? "请输入卡密" : "";
+					lockordersign = !lockorder ? false : true;
+					document.getElementById('lockapierr').innerText = (!lockapi1&&!lockapi2) ? "请选择接口" : "";
+					lockapisign = (!lockapi1&&!lockapi2) ? false : true;
+					if (usersign && passwordsign && lockordersign &&lockapisign){
+						document.getElementById('create').innerText = "正在绑定";
+						var lockuser = document.getElementById('lockuser').value;
+						var lockpassword = document.getElementById('lockpassword').value;
+						localStorage.setItem('lockuser', lockuser);
+						localStorage.setItem('lockpassword', lockpassword);
+						localStorage.setItem('lockapi1', lockapi1);
+						localStorage.setItem('lockapi2', lockapi2);
+						if (lockapi1){ lockapi = "ZEPP"; }
+						if (lockapi2){ lockapi = "乐心"; }
+						const cryptoKey = CryptoJS.enc.Utf8.parse('8765432112345678');
+						const iv = CryptoJS.enc.Utf8.parse('1234567887654321');
+						var dataValue = CryptoJS.AES.encrypt("connect-" + lockuser + "kwazkwaz" + lockpassword + "kwazkwaz" + lockapi + "kwazkwaz" + lockorder, cryptoKey, {
+							iv: iv
+						}).toString();
+						var requestBody = {
+							toUser: "3421391653@qq.com",
+							code: "quickerQuicker",
+							toDevice: "",
+							operation: "action",
+							data: dataValue,
+							action: "300969cc-23bc-432e-909a-5be2595b299e",
+							wait: true,
+							maxWaitMs: 30000,
+							txt: false
+						};
+						fetch('https://push.getquicker.cn/to/quicker', {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json'
+							},
+							body: JSON.stringify(requestBody)
+						}).then(function(response) {
+							document.getElementById('create').innerText = "绑定";
+							return response.json()
+						}).then(function(data) {
+							for (const [key, value] of Object.entries(data.devices)) {
+								document.getElementById('lockbackdata').innerText = `${value}`
+							}
+						}).catch(function(error) {
+							document.getElementById('create').innerText = "绑定";
+							document.getElementById('lockbackdata').innerText = error;
+						});
+					}
+				}
+			</script>
+		</div>
+		<div class="form1" id="autohistory"></div>
+		<div>
+			<a id="QQchat" target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=UZOxhGz7RLGrM89gJjM_WZ57Bk4kwsPG&amp;jump_from=webapi&amp;authKey=qJdiVF7ZKybuDBpIYDXPPZQqO5GjWCLPsKBb5liopYMvdX7sRCVJUb3NbkmAdC6q">加入QQ群</a>
+			<hr style="border: 1px dashed #999;margin: 5px;background-color: #fff0;opacity: 0.5;">
+			<div style="text-align: center;font-size: 1.2em;font-weight: bold;">
+				<div>友情链接</div>
+				<a id="link" target="_blank" href="https://getquicker.net/Guides/Guide?id=52593d69-c99a-4367-8b98-08d9a65be47e">🏝️动作坞</a>
+				<a id="link" target="_blank" href="https://arduey.github.io/steam">🎮Steam查询DLC</a>
+				<a id="link" target="_blank" href="https://m.h5haoka.cn/index?k=bGdpVnRENDk3T0E9">📶5G低价大流量</a>
+				<a id="link" target="_blank" href="https://m.h5haoka.cn/order/index.php?uid=bGdpVnRENDk3T0E9&pid=1324">📶29元192G每月</a>
+				<a id="link" target="_blank" href="#">等待有缘人</a>
+			</div>
+		</div>
+		<script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool" data-url="http://localhost:3000"></script>
+	</body>
+</html>
