@@ -30,6 +30,7 @@
 				textarea.remove();
 			}
 			function showAutoCloseAlert(message, duration) {
+				document.body.removeChild(alertDiv);
 				var alertDiv = document.createElement('div');
 				alertDiv.style.position = 'fixed';
 				alertDiv.style.top = '80%';
