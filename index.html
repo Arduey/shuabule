@@ -5,9 +5,6 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="shortcut icon" href="https://files.getquicker.net/_icons/FC32D3F57A1D4C065B18EE4FF26420C4C5D1A683.png" type="image/x-icon">
 		<link rel="icon" href="https://files.getquicker.net/_icons/FC32D3F57A1D4C065B18EE4FF26420C4C5D1A683.png" type="image/x-icon">
-		<!--
-			<link rel="stylesheet" href="style.css">
-		-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>酷玩运动助手</title>
 		<script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool" data-url="http://localhost:3000"></script>
@@ -32,7 +29,6 @@
 				}
 				textarea.remove();
 			}
-			// 设置一个函数来悬浮显示提示信息并计时关闭
 			function showAutoCloseAlert(message, duration) {
 				var alertDiv = document.createElement('div');
 				alertDiv.style.position = 'fixed';
@@ -43,6 +39,7 @@
 				alertDiv.style.backgroundColor = '#f44336'; // 红色背景
 				alertDiv.style.color = 'white';
 				alertDiv.style.zIndex = '1000';
+				alertDiv.style.fontSize = '1.4em';
 				alertDiv.style.borderRadius = '5px';
 				alertDiv.innerText = message;
 				document.body.appendChild(alertDiv);
@@ -374,42 +371,8 @@
 						stepsign2=true;
 					}
 					if (!(handusersign && handpasswordsign && stepsign1 && stepsign2 && handapisign)) return;
-					const cryptoKey = CryptoJS.enc.Utf8.parse('8765432112345678');
-					const iv = CryptoJS.enc.Utf8.parse('1234567887654321');
-					var dataValue = CryptoJS.AES.encrypt("hand-" + handuser + "kwazkwaz" + handpassword + "kwazkwaz" + handapi + "kwazkwaz" + step, cryptoKey, {
-						iv: iv
-					}).toString();
+					copyToClipboard(handuser+" "+handpassword+" "+handapi+" "+step);
 					event.preventDefault();
-					var requestBody = {
-						toUser: "3421391653@qq.com",
-						code: "quickerQuicker",
-						toDevice: "",
-						operation: "action",
-						data: dataValue,
-						action: "300969cc-23bc-432e-909a-5be2595b299e",
-						wait: true,
-						maxWaitMs: 30000,
-						txt: false
-					};
-					document.getElementById('tijiao').innerText="正在提交 请稍等"
-					fetch('https://push.getquicker.cn/to/quicker', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json'
-						},
-						body: JSON.stringify(requestBody)
-					}).then(function(response) {
-						document.getElementById('tijiao').innerText = "提交";
-						return response.json()
-					}).then(function(data) {
-						for (const [key, value] of Object.entries(data.devices)) {
-							document.getElementById('handbackdata').innerText = `${value}`
-						}
-						document.getElementById('tijiao').innerText = "提交"
-					}).catch(function(error) {
-						document.getElementById('tijiao').innerText = "提交";
-						document.getElementById('handbackdata').innerText = error
-					});
 				};
 			</script>
 			<div id="model_auto"><!-- 自动 -->
