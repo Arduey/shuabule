@@ -20,12 +20,12 @@
 				try {
 					const result = document.execCommand('copy');
 					if (result) {
-						showAutoCloseAlert('复制成功, 去QQ发给机器人吧！', 2000);
+						showAutoCloseAlert('命令复制成功\n去QQ发给机器人吧！', 2000);
 					} else {
-						showAutoCloseAlert('复制失败！', 2000);
+						showAutoCloseAlert('命令复制失败！', 2000);
 					}
 				} catch (error) {
-					showAutoCloseAlert('复制失败！', 2000);
+					showAutoCloseAlert('命令复制失败！', 2000);
 				}
 				textarea.remove();
 			}
@@ -40,11 +40,11 @@
 				alertDiv.style.top = '80%';
 				alertDiv.style.left = '50%';
 				alertDiv.style.transform = 'translate(-50%, -50%)';
-				alertDiv.style.padding = '20px';
+				alertDiv.style.padding = '10px';
 				alertDiv.style.backgroundColor = '#f44336'; // 红色背景
 				alertDiv.style.color = 'white';
 				alertDiv.style.zIndex = '1000';
-				alertDiv.style.fontSize = '1.4em';
+				alertDiv.style.fontSize = '1.2em';
 				alertDiv.style.borderRadius = '5px';
 				alertDiv.innerText = message;
 				document.body.appendChild(alertDiv);
@@ -266,7 +266,7 @@
 					<!--切换多账号-->
 					<script>
 						document.getElementsByClassName('likeiuput')[0].style.width=document.getElementById('handuser').offsetWidth-12+"px";
-						window.onload = function() {showAutoCloseAlert('网站被攻击了, 刷步功能被迫转移到QQ了\n\n现网站仅用于快速生成QQ消息用的命令！\n\n加入QQ群找机器人刷步吧!', 5000);
+						window.onload = function() {showAutoCloseAlert('网站被攻击, 刷步功能被迫转到QQ\n\n现网站仅用于快速生成刷步命令！\n\n加入QQ群找机器人刷步吧!', 5000);
 							account(1);
 							document.getElementById('autoapi1').checked=false;
 							document.getElementById('autoapi2').checked=false;
