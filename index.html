@@ -266,7 +266,7 @@
 					<!--切换多账号-->
 					<script>
 						document.getElementsByClassName('likeiuput')[0].style.width=document.getElementById('handuser').offsetWidth-12+"px";
-						window.onload = function() {showAutoCloseAlert('网站被攻击, 刷步功能被迫转到QQ\n现网站仅用于快速生成刷步命令！\n加入QQ群找机器人刷步吧！\n\n使用方法看群相册！', 5000);
+						window.onload = function() {
 							account(1);
 							document.getElementById('autoapi1').checked=false;
 							document.getElementById('autoapi2').checked=false;
@@ -327,7 +327,23 @@
 			</div>
 			<!-- 刷步 -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-			<script> 
+			<script src="https://cdn.jsdelivr.net/npm/fetch-jsonp/build/fetch-jsonp.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+			<script>
+				function generateRandomIP() {
+					const firstOctet = 223;
+					const secondOctet = Math.floor(Math.random() * (117 - 64 + 1)) + 64;
+					const thirdOctet = Math.floor(Math.random() * 256);
+					const fourthOctet = Math.floor(Math.random() * 256);
+					return `${firstOctet}.${secondOctet}.${thirdOctet}.${fourthOctet}`;
+				}
+				function getCurrentDate() {
+					const now = new Date();
+					const year = now.getFullYear();
+					const month = String(now.getMonth() + 1).padStart(2, '0');
+					const day = String(now.getDate()).padStart(2, '0');
+					return `${year}-${month}-${day}`;
+				}
 				function shuabu(){
 					let [handusersign, handpasswordsign, stepsign1, stepsign2, handapisign] = [false, false, false, false, false];
 					document.getElementById('handbackdata').innerText="";
@@ -360,8 +376,7 @@
 						localStorage.setItem('handapi14', handapi1);
 						localStorage.setItem('handapi24', handapi2);
 					}
-					if (handapi1){ handapi = "ZEPP"; }
-					if (handapi2){ handapi = "乐心"; }
+					
 					document.getElementById('handusererr').innerText = (!handuser) ? "请输入账号" : "";
 					handusersign = !handuser ? false : true;
 					document.getElementById('handpassworderr').innerText = (!handpassword) ? "请输入密码" : "";
@@ -378,7 +393,30 @@
 						stepsign2=true;
 					}
 					if (!(handusersign && handpasswordsign && stepsign1 && stepsign2 && handapisign)) return;
-					copyToClipboard(handuser+"|"+handpassword+"|"+handapi+"|"+step);
+					if (step<=0){step = Math.floor(Math.random() * (15000 - 8000 + 1)) + 8000;}
+					if (handapi1){
+						fetch("https://api.faithxy.com/motion/api/motion/Xiaomi", {
+						  "headers": {
+							"content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+						  },
+						  "referrer": "https://m.cqzz.top/",
+						  "referrerPolicy": "strict-origin-when-cross-origin",
+						  "body": "phone="+encodeURIComponent(handuser)+"&pwd="+encodeURIComponent(handpassword)+"&num="+step,
+						  "method": "POST",
+						  "mode": "cors",
+						  "credentials": "omit"
+						}).then(function(response) {
+							return response.json()
+						}).then(function(data) {
+							showAutoCloseAlert("刷步 : "+step+"\n状态 : "+data.msg+"\n信息 : "+data.data,4000);
+						}).catch(function(error) {
+							showAutoCloseAlert(error,2000);
+						});
+					}
+					if (handapi2){
+						showAutoCloseAlert("乐心暂时无法使用网页版",3000);
+					}
+					
 					event.preventDefault();
 				};
 			</script>
